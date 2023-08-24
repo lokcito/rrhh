@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center">Lista de personas</h1>
+<form method="GET">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <button type="submit">Filtrar</button>
+                </th>
+                <th>
+                    <input value="{{ f_firstname }}" type="text" class="form-control" name="firstname">
+                </th>
+                <th></th>
+                <th>
+                    <input type="text" class="form-control" name="startdate">
+                </th>
+                <th>
+                    <input type="text" class="form-control" name="enddate">
+                </th>            
+            </tr>
+            <tr>
+                <th>Business ID</th>
+                <th>First name</th>
+                <th>Middle name</th>
+                <th>Last name</th>
+                <th>Modified Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for per in personas %}
+                <tr>
+                    <td>{{ per.businessentityid }}</td>
+                    <td>{{ per.firstname }}</td>
+                    <td>{{ per.middlename }}</td>
+                    <td>{{ per.lastname }}</td>
+                    <td>{{ per.modifieddate }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+{% endblock %}
